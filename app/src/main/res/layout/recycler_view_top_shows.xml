@@ -1,25 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="10dp">
 
-    <ImageView
-        android:id="@+id/showPosterIV"
-        android:layout_width="100dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/showPosterCV"
+        style="@style/Widget.Material3.CardView.Outlined"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_launcher_foreground" />
+        app:cardCornerRadius="10dp">
+
+        <ImageView
+            android:id="@+id/showPosterIV"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/show_poster"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_launcher_foreground" />
+    </androidx.cardview.widget.CardView>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/showPosterIV"
-        android:orientation="vertical">
+        android:layout_toEndOf="@+id/showPosterCV"
+        android:orientation="vertical"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/showTitleTV"
@@ -27,19 +38,48 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:padding="10dp"
+            android:paddingBottom="5dp"
             android:textColor="?android:textColorPrimary"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/showVotesAvgTV"
+            android:id="@+id/showDescTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawablePadding="10dp"
-            android:padding="10dp"
+            android:ellipsize="end"
+            android:maxLines="3"
+            android:paddingBottom="10dp"
             android:textColor="?android:textColorPrimary"
-            android:textSize="16sp"
-            app:drawableStartCompat="@drawable/ic_heart" />
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/showAIRTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:drawablePadding="10dp"
+                android:paddingEnd="10dp"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="14sp"
+                app:drawableStartCompat="@drawable/ic_date"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/showVotesAvgTV"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:drawablePadding="10dp"
+                android:textColor="?android:textColorPrimary"
+                android:textSize="14sp"
+                app:drawableStartCompat="@drawable/ic_heart" />
+        </LinearLayout>
     </LinearLayout>
 
 </RelativeLayout>

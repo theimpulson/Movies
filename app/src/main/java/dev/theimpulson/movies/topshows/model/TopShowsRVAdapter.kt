@@ -21,6 +21,8 @@ class TopShowsRVAdapter :
         holder.binding.apply {
             showPosterIV.load(TMDBAPIInterface.ASSETS_URL + show.poster_path)
             showTitleTV.text = show.name
+            showDescTV.text = show.overview
+            showAIRTV.text = show.first_air_date
             showVotesAvgTV.text = show.vote_average.toString()
         }
     }
