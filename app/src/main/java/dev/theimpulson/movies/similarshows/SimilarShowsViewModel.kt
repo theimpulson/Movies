@@ -1,4 +1,4 @@
-package dev.theimpulson.movies.topshows
+package dev.theimpulson.movies.similarshows
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,15 +14,15 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 @HiltViewModel
-class TopShowsViewModel @Inject constructor(
+class SimilarShowsViewModel @Inject constructor(
     private val showPSFactory: ShowPSFactory
 ) : ViewModel() {
 
-    fun getTopShows(): Flow<PagingData<Show>> {
+    fun getSimilarShows(show: Show): Flow<PagingData<Show>> {
         val pagingConfig = PagingConfig(pageSize = 1, enablePlaceholders = false)
         return Pager(
             config = pagingConfig,
-            pagingSourceFactory = { showPSFactory.createShowPagingSource(ShowType.TOP) })
+            pagingSourceFactory = { showPSFactory.createShowPagingSource(ShowType.SIMILAR, show) })
             .flow
             .cachedIn(viewModelScope)
     }

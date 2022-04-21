@@ -9,6 +9,19 @@
         android:id="@+id/topShowsFragment"
         android:name="dev.theimpulson.movies.topshows.TopShowsFragment"
         android:label="Top Shows"
-        tools:layout="@layout/fragment_top_shows" />
+        tools:layout="@layout/fragment_top_shows" >
+        <action
+            android:id="@+id/action_topShowsFragment_to_similarShowsFragment"
+            app:destination="@id/similarShowsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/similarShowsFragment"
+        android:name="dev.theimpulson.movies.similarshows.SimilarShowsFragment"
+        android:label="fragment_similar_shows"
+        tools:layout="@layout/fragment_similar_shows" >
+        <argument
+            android:name="currentShow"
+            app:argType="dev.theimpulson.movies.api.data.Show" />
+    </fragment>
 
 </navigation>

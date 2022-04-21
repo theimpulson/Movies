@@ -1,12 +1,17 @@
-package dev.theimpulson.movies.topshows.model
+package dev.theimpulson.movies.common
 
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedInject
 import dev.theimpulson.movies.api.TMDBAPIRepository
 import dev.theimpulson.movies.api.data.Show
-import javax.inject.Inject
+import dev.theimpulson.movies.utils.ShowType
 
-class TopShowsPagingSource @Inject constructor(
+class ShowPagingSource @AssistedInject constructor(
+    @Assisted private val showType: ShowType,
+    @Assisted private val show: Show,
     private val tmdbapiRepository: TMDBAPIRepository
 ) : PagingSource<Int, Show>() {
 
@@ -18,7 +23,14 @@ class TopShowsPagingSource @Inject constructor(
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Show> {
         val page = params.key ?: 1
-        val response = tmdbapiRepository.getTopShows(page)
+        val response = if (showType == ShowType.TOP) {
+            tmdbapiRepository.getTopShows(page)
+        } else {
+            // Insert current show on top
+            val apiResponse = tmdbapiRepository.getSimilarShows(show.id, page)
+            apiResponse.results.add(0, show)
+            apiResponse
+        }
         return LoadResult.Page(
             response.results,
             prevKey = if (page == 1) null else page - 1,

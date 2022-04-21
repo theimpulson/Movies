@@ -1,16 +1,19 @@
-package dev.theimpulson.movies.topshows.model
+package dev.theimpulson.movies.topshows.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import dev.theimpulson.movies.api.TMDBAPIInterface
 import dev.theimpulson.movies.api.data.Show
+import dev.theimpulson.movies.common.ShowDiffUtil
 import dev.theimpulson.movies.databinding.RecyclerViewTopShowsBinding
+import dev.theimpulson.movies.topshows.TopShowsFragmentDirections
 
 class TopShowsRVAdapter :
-    PagingDataAdapter<Show, TopShowsRVAdapter.ViewHolder>(TopShowsDiffUtil()) {
+    PagingDataAdapter<Show, TopShowsRVAdapter.ViewHolder>(ShowDiffUtil()) {
 
     inner class ViewHolder(val binding: RecyclerViewTopShowsBinding) :
         RecyclerView.ViewHolder(binding.root)
@@ -24,6 +27,10 @@ class TopShowsRVAdapter :
             showDescTV.text = show.overview
             showAIRTV.text = show.first_air_date
             showVotesAvgTV.text = show.vote_average.toString()
+            root.setOnClickListener {
+                val action = TopShowsFragmentDirections.actionTopShowsFragmentToSimilarShowsFragment(show)
+                it.findNavController().navigate(action)
+            }
         }
     }
 

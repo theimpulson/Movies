@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import dev.theimpulson.movies.R
 import dev.theimpulson.movies.databinding.FragmentTopShowsBinding
-import dev.theimpulson.movies.topshows.model.TopShowsRVAdapter
+import dev.theimpulson.movies.topshows.adapter.TopShowsRVAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch

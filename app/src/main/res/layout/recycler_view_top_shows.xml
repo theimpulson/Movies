@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
     android:padding="10dp">
 
     <androidx.cardview.widget.CardView
@@ -73,8 +75,8 @@
             <TextView
                 android:id="@+id/showVotesAvgTV"
                 android:layout_width="wrap_content"
-                android:layout_gravity="center"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:drawablePadding="10dp"
                 android:textColor="?android:textColorPrimary"
                 android:textSize="14sp"

@@ -4,4 +4,7 @@
     <!-- TopShows Fragment -->
     <string name="top_shows">Top Shows</string>
     <string name="show_poster">Show poster</string>
+
+    <!-- SimilarShows Fragment -->
+    <string name="show_backdrop">Show backdrop</string>
 </resources>

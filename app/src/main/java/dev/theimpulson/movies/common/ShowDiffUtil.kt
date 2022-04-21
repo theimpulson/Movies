@@ -1,9 +1,9 @@
-package dev.theimpulson.movies.topshows.model
+package dev.theimpulson.movies.common
 
 import androidx.recyclerview.widget.DiffUtil
 import dev.theimpulson.movies.api.data.Show
 
-class TopShowsDiffUtil : DiffUtil.ItemCallback<Show>() {
+class ShowDiffUtil : DiffUtil.ItemCallback<Show>() {
     override fun areItemsTheSame(oldItem: Show, newItem: Show): Boolean {
         return oldItem.id == newItem.id
     }

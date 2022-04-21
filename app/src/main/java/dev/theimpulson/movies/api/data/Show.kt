@@ -1,5 +1,9 @@
 package dev.theimpulson.movies.api.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Show(
     val backdrop_path: String = String(),
     val first_air_date: String = String(),
@@ -14,4 +18,4 @@ data class Show(
     val poster_path: String = String(),
     val vote_average: Double = 0.0,
     val vote_count: Int = 0
-)
+) : Parcelable

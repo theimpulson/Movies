@@ -18,9 +18,9 @@ interface TMDBAPIInterface {
         @Query("page") page: Int = 1
     ): Response<ShowsData>
 
-    @GET("/tv/{tv_id}/similar")
+    @GET("tv/{tv_id}/similar")
     suspend fun getSimilarShows(
-        @Path("tv_id") id: Int = 1,
+        @Path("tv_id") tv_id: Int,
         @Query("page") page: Int = 1
     ): Response<ShowsData>
 
