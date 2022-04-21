@@ -10,6 +10,7 @@ interface TMDBAPIInterface {
 
     companion object {
         const val BASE_URL = "https://api.themoviedb.org/3/"
+        const val ASSETS_URL = "https://image.tmdb.org/t/p/original"
     }
 
     @GET("tv/top_rated")
