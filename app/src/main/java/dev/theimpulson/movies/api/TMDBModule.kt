@@ -13,13 +13,15 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object TMDBModule {
+open class TMDBModule {
+
+    open var baseURL = "https://api.themoviedb.org/3/"
 
     @Singleton
     @Provides
     fun provideTMDBAPIInstance(okHttpClient: OkHttpClient): TMDBAPIInterface {
         return Retrofit.Builder()
-            .baseUrl(TMDBAPIInterface.BASE_URL)
+            .baseUrl(baseURL)
             .client(okHttpClient)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()

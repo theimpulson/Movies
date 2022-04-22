@@ -9,6 +9,7 @@ import androidx.paging.cachedIn
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.theimpulson.movies.api.data.Show
 import dev.theimpulson.movies.common.ShowPSFactory
+import dev.theimpulson.movies.utils.CountingIdlingResourceSingleton
 import dev.theimpulson.movies.utils.ShowType
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -19,6 +20,7 @@ class TopShowsViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun getTopShows(): Flow<PagingData<Show>> {
+        CountingIdlingResourceSingleton.increment()
         val pagingConfig = PagingConfig(pageSize = 1, enablePlaceholders = false)
         return Pager(
             config = pagingConfig,

@@ -10,6 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import dev.theimpulson.movies.R
 import dev.theimpulson.movies.databinding.FragmentTopShowsBinding
 import dev.theimpulson.movies.topshows.adapter.TopShowsRVAdapter
+import dev.theimpulson.movies.utils.CountingIdlingResourceSingleton
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
@@ -35,6 +36,7 @@ class TopShowsFragment : Fragment(R.layout.fragment_top_shows) {
         // load the shows
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.getTopShows().distinctUntilChanged().collectLatest {
+                CountingIdlingResourceSingleton.decrement()
                 topShowsRVAdapter.submitData(it)
             }
         }
