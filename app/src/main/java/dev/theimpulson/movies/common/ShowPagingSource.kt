@@ -29,6 +29,8 @@ class ShowPagingSource @AssistedInject constructor(
             // Insert current show on top
             val apiResponse = tmdbapiRepository.getSimilarShows(show.id, page)
             apiResponse.results.add(0, show)
+            // Filter by id to ensure current show is not already present in response
+            apiResponse.results.distinctBy { it.id }
             apiResponse
         }
         return LoadResult.Page(

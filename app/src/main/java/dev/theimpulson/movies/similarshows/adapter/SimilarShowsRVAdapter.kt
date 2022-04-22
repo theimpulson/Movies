@@ -20,7 +20,9 @@ class SimilarShowsRVAdapter :
         val show = getItem(position) ?: Show()
 
         holder.binding.apply {
-            backdropIV.load(TMDBAPIInterface.ASSETS_URL + show.backdrop_path)
+            if (!show.backdrop_path.isNullOrBlank()) {
+                backdropIV.load(TMDBAPIInterface.ASSETS_URL + show.backdrop_path)
+            }
             showPosterIV.load(TMDBAPIInterface.ASSETS_URL + show.poster_path)
             showTitleTV.text = show.name
             showDescTV.text = show.overview
