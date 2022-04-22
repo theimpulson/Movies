@@ -23,5 +23,4 @@ interface TMDBAPIInterface {
         @Path("tv_id") tv_id: Int,
         @Query("page") page: Int = 1
     ): Response<ShowsData>
-
 }

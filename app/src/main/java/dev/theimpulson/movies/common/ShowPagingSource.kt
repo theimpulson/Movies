@@ -1,6 +1,5 @@
 package dev.theimpulson.movies.common
 
-import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import dagger.assisted.Assisted
@@ -39,5 +38,4 @@ class ShowPagingSource @AssistedInject constructor(
             nextKey = if (response.results.isEmpty()) null else page + 1
         )
     }
-
 }

@@ -44,5 +44,4 @@ class TopShowsFragment : Fragment(R.layout.fragment_top_shows) {
         super.onDestroy()
         _binding = null
     }
-
 }

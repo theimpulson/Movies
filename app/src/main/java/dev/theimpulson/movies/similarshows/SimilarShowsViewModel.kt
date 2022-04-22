@@ -22,9 +22,9 @@ class SimilarShowsViewModel @Inject constructor(
         val pagingConfig = PagingConfig(pageSize = 1, enablePlaceholders = false)
         return Pager(
             config = pagingConfig,
-            pagingSourceFactory = { showPSFactory.createShowPagingSource(ShowType.SIMILAR, show) })
+            pagingSourceFactory = { showPSFactory.createShowPagingSource(ShowType.SIMILAR, show) }
+        )
             .flow
             .cachedIn(viewModelScope)
     }
-
 }

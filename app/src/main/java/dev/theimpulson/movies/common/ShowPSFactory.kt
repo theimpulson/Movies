@@ -8,5 +8,4 @@ import dev.theimpulson.movies.utils.ShowType
 interface ShowPSFactory {
 
     fun createShowPagingSource(showType: ShowType, show: Show = Show()): ShowPagingSource
-
 }

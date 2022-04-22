@@ -22,9 +22,9 @@ class TopShowsViewModel @Inject constructor(
         val pagingConfig = PagingConfig(pageSize = 1, enablePlaceholders = false)
         return Pager(
             config = pagingConfig,
-            pagingSourceFactory = { showPSFactory.createShowPagingSource(ShowType.TOP) })
+            pagingSourceFactory = { showPSFactory.createShowPagingSource(ShowType.TOP) }
+        )
             .flow
             .cachedIn(viewModelScope)
     }
-
 }
